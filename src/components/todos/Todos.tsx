@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import TodoList from "./todoList/TodoList";
 
 const StyledWrapper = styled.div`
   width: 100%;
+  margin-top: 100px;
 `;
 
 const StyledForm = styled.form`
@@ -41,13 +43,46 @@ const StyledInput = styled.input`
   }
 `;
 
-const Todo = () => {
+const TodosWrapper = styled.div`
+  border-radius: 10px;
+  background: hsl(237, 14%, 26%);
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+`;
+
+const OptionsWrapper = styled.div`
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: hsl(234, 11%, 52%);
+`;
+
+export interface SingleToDo {
+  id: number;
+  title: string;
+  isCompleded: boolean;
+}
+
+const Todos = () => {
   const [newToDo, setNewToDo] = useState("");
-  const handleSubmit = () => {};
+  const [todos, setTodos] = useState<SingleToDo[] | []>([]);
+
+  const setId = () => {
+    if (todos.length) {
+      return Math.max(...todos.map((todo: any) => todo.id)) + 1;
+    }
+    return 1;
+  };
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setTodos((prevState) => [...prevState, { title: newToDo, isCompleded: false, id: setId() }]);
+  };
 
   const handleChange = (e: { target: { value: React.SetStateAction<string> } }) => {
     setNewToDo(e.target.value);
-    console.log(newToDo);
   };
   return (
     <StyledWrapper>
@@ -59,9 +94,20 @@ const Todo = () => {
           aria-label="Create a new todo..."
         />
       </StyledForm>
-      To jest todo
+      <TodosWrapper>
+        <TodoList todos={todos} setTodos={setTodos} />
+        <OptionsWrapper>
+          <p>Items left</p>
+          <div>
+            <span>All</span>
+            <span>Active</span>
+            <span>Completed</span>
+          </div>
+          <p>Clear completed</p>
+        </OptionsWrapper>
+      </TodosWrapper>
     </StyledWrapper>
   );
 };
 
-export default Todo;
+export default Todos;

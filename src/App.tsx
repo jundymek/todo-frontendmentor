@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "./components/header/Header";
-import Todo from "./components/todo/Todo";
+import Todos from "./components/todos/Todos";
 import styled from "styled-components";
 import GlobalStyle from "./styles/globalStyles";
 
@@ -15,7 +15,7 @@ function App() {
       <GlobalStyle />
       <StyledLayout>
         <Header />
-        <Todo />
+        <Todos />
       </StyledLayout>
     </>
   );
