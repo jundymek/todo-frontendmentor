@@ -12,7 +12,7 @@ interface TodoListItemProps {
 const StyledLi = styled.li<{ isCompleted: boolean }>`
   width: 100%;
   box-sizing: border-box;
-  padding: 30px 20px 30px 60px;
+  padding: 30px 20px 30px 80px;
   margin: 0;
   color: ${(props) => (props.isCompleted ? "hsl(233, 14%, 35%)" : "hsl(234, 39%, 85%)")};
   font-size: 18px;
@@ -22,8 +22,8 @@ const StyledLi = styled.li<{ isCompleted: boolean }>`
   border-bottom: 1px solid hsl(234, 11%, 52%);
   position: relative;
   &:first-child {
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
   }
 `;
 
@@ -79,15 +79,15 @@ const TodoListItem = React.memo<TodoListItemProps>(({ todo, todos, setTodos }) =
     console.log(newTodos);
     const x = newTodos.find((item) => item.id === todo.id);
     if (x) {
-      x.isCompleded = !x.isCompleded;
+      x.isCompleted = !x.isCompleted;
     }
     setTodos(newTodos);
   };
   console.log(todo);
   return (
-    <StyledLi isCompleted={todo.isCompleded}>
-      <StyledAction type="button" onClick={handleComplete} isCompleted={todo.isCompleded}>
-        <StyledInnerButton isCompleted={todo.isCompleded}></StyledInnerButton>
+    <StyledLi isCompleted={todo.isCompleted}>
+      <StyledAction type="button" onClick={handleComplete} isCompleted={todo.isCompleted}>
+        <StyledInnerButton isCompleted={todo.isCompleted}></StyledInnerButton>
       </StyledAction>
       {todo.title}
     </StyledLi>

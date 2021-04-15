@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import TodoList from "./todoList/TodoList";
+import TodoOptions from "./todoList/todoOptions/TodoOptions";
 
 const StyledWrapper = styled.div`
   width: 100%;
@@ -44,7 +45,7 @@ const StyledInput = styled.input`
 `;
 
 const TodosWrapper = styled.div`
-  border-radius: 10px;
+  border-radius: 5px;
   background: hsl(237, 14%, 26%);
   margin: 0;
   padding: 0;
@@ -52,23 +53,16 @@ const TodosWrapper = styled.div`
   flex-direction: column;
 `;
 
-const OptionsWrapper = styled.div`
-  padding: 0 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  color: hsl(234, 11%, 52%);
-`;
-
 export interface SingleToDo {
   id: number;
   title: string;
-  isCompleded: boolean;
+  isCompleted: boolean;
 }
 
 const Todos = () => {
   const [newToDo, setNewToDo] = useState("");
   const [todos, setTodos] = useState<SingleToDo[] | []>([]);
+  const [filterBy, setFilterBy] = useState<"all" | "active" | "completed">("all");
 
   const setId = () => {
     if (todos.length) {
@@ -78,7 +72,18 @@ const Todos = () => {
   };
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setTodos((prevState) => [...prevState, { title: newToDo, isCompleded: false, id: setId() }]);
+    setTodos((prevState) => [...prevState, { title: newToDo, isCompleted: false, id: setId() }]);
+  };
+
+  const filteredTodos = () => {
+    switch (filterBy) {
+      case "all":
+        return todos;
+      case "active":
+        return todos.filter((todo) => todo.isCompleted === false);
+      case "completed":
+        return todos.filter((todo) => todo.isCompleted === true);
+    }
   };
 
   const handleChange = (e: { target: { value: React.SetStateAction<string> } }) => {
@@ -95,16 +100,8 @@ const Todos = () => {
         />
       </StyledForm>
       <TodosWrapper>
-        <TodoList todos={todos} setTodos={setTodos} />
-        <OptionsWrapper>
-          <p>Items left</p>
-          <div>
-            <span>All</span>
-            <span>Active</span>
-            <span>Completed</span>
-          </div>
-          <p>Clear completed</p>
-        </OptionsWrapper>
+        <TodoList todos={filteredTodos()} setTodos={setTodos} />
+        <TodoOptions todos={todos} setTodos={setTodos} filterBy={filterBy} setFilterBy={setFilterBy} />
       </TodosWrapper>
     </StyledWrapper>
   );

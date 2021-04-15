@@ -14,8 +14,8 @@ const StyledUl = styled.ul`
   width: 100%;
   margin: 0;
   padding: 0;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
 `;
 
 const TodoList = React.memo<TodoListProps>(({ todos, setTodos }) => {

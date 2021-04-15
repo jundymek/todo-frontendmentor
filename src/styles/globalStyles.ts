@@ -7,9 +7,8 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
     font-family: 'Josefin Sans', sans-serif;
     background-image: url(${bgImage});
-    background-size: contain;
+    background-size: 100% 40%;
     background-repeat: no-repeat;
-    /* box-sizing:border-box; */
     background-color: hsl(235, 24%, 19%);
   }
 
