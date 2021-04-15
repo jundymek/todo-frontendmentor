@@ -17,9 +17,9 @@ const StyledLi = styled.li<{ isCompleted: boolean }>`
   color: ${(props) => (props.isCompleted ? "hsl(233, 14%, 35%)" : "hsl(234, 39%, 85%)")};
   font-size: 18px;
   text-decoration: ${(props) => (props.isCompleted ? "line-through" : "none")};
-  background-color: hsl(237, 14%, 26%);
+  background-color: hsl(235, 24%, 19%);
   font-weight: 400;
-  border-bottom: 1px solid hsl(234, 11%, 52%);
+  border-bottom: 1px solid hsl(237, 14%, 26%);
   position: relative;
   &:first-child {
     border-top-left-radius: 5px;
@@ -39,7 +39,7 @@ const StyledAction = styled.a<{ isCompleted: boolean }>`
   border: ${(props) =>
     props.isCompleted
       ? "1px solid linear-gradient(to right, hsl(192, 100%, 67%), hsl(280, 87%, 65%))"
-      : "1px solid hsl(234, 11%, 52%)"};
+      : "1px solid hsl(237, 14%, 26%)"};
   opacity: 1;
   width: ${(props) => (props.isCompleted ? "28px" : "26px")};
   height: ${(props) => (props.isCompleted ? "28px" : "26px")};
@@ -68,7 +68,7 @@ const StyledInnerButton = styled.div<{ isCompleted: boolean }>`
   content: "";
   width: 22px;
   height: 22px;
-  background: hsl(237, 14%, 26%);
+  background: hsl(235, 24%, 19%);
   border-radius: 50%;
   top: 2px;
   left: 2px;

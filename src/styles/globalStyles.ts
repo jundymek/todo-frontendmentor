@@ -9,7 +9,7 @@ const GlobalStyle = createGlobalStyle`
     background-image: url(${bgImage});
     background-size: 100% 40%;
     background-repeat: no-repeat;
-    background-color: hsl(235, 24%, 19%);
+    background-color: hsl(235, 21%, 11%);
   }
 
 `;
