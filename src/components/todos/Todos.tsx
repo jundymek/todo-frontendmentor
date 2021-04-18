@@ -20,7 +20,7 @@ const StyledForm = styled.form`
     left: 20px;
     transform: translateY(-50%);
     border-radius: 50%;
-    border: 1px solid hsl(237, 14%, 26%);
+    border: 1px solid ${({ theme }) => theme.todoListItemBorder};
     width: 26px;
     height: 26px;
   }
@@ -29,13 +29,13 @@ const StyledForm = styled.form`
 const StyledInput = styled.input`
   width: 100%;
   box-sizing: border-box;
-  padding: 20px 20px 20px 60px;
+  padding: 30px 20px 30px 80px;
   margin: 0;
   border: none;
   border-radius: 5px;
   color: hsl(234, 11%, 52%);
   font-size: 18px;
-  background-color: hsl(235, 24%, 19%);
+  background-color: ${({ theme }) => theme.todoListItemBackground};
   font-weight: 400;
   &::placeholder {
     color: hsl(234, 11%, 52%);
@@ -45,7 +45,7 @@ const StyledInput = styled.input`
 
 const TodosWrapper = styled.div`
   border-radius: 5px;
-  background: hsl(235, 24%, 19%);
+  background: ${({ theme }) => theme.todosWrapper};
   margin: 0;
   padding: 0;
   display: flex;

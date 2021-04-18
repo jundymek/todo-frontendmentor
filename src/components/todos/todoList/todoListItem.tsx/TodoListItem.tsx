@@ -14,12 +14,13 @@ const StyledLi = styled.li<{ isCompleted: boolean }>`
   box-sizing: border-box;
   padding: 30px 20px 30px 80px;
   margin: 0;
-  color: ${(props) => (props.isCompleted ? "hsl(233, 14%, 35%)" : "hsl(234, 39%, 85%)")};
+  color: ${(props) =>
+    props.isCompleted ? `${props.theme.todoListItemColorCompleted}` : `${props.theme.todoListItemColor}`};
   font-size: 18px;
   text-decoration: ${(props) => (props.isCompleted ? "line-through" : "none")};
-  background-color: hsl(235, 24%, 19%);
+  background-color: ${({ theme }) => theme.todoListItemBackground};
   font-weight: 400;
-  border-bottom: 1px solid hsl(237, 14%, 26%);
+  border-bottom: 1px solid ${({ theme }) => theme.todoListItemBorder};
   position: relative;
   &:first-child {
     border-top-left-radius: 5px;
@@ -39,7 +40,7 @@ const StyledAction = styled.a<{ isCompleted: boolean }>`
   border: ${(props) =>
     props.isCompleted
       ? "1px solid linear-gradient(to right, hsl(192, 100%, 67%), hsl(280, 87%, 65%))"
-      : "1px solid hsl(237, 14%, 26%)"};
+      : `1px solid ${props.theme.todoListItemBorder}`};
   opacity: 1;
   width: ${(props) => (props.isCompleted ? "28px" : "26px")};
   height: ${(props) => (props.isCompleted ? "28px" : "26px")};
@@ -68,7 +69,7 @@ const StyledInnerButton = styled.div<{ isCompleted: boolean }>`
   content: "";
   width: 22px;
   height: 22px;
-  background: hsl(235, 24%, 19%);
+  background: ${({ theme }) => theme.todoListItemBackground};
   border-radius: 50%;
   top: 2px;
   left: 2px;
@@ -83,7 +84,7 @@ const TodoListItem = React.memo<TodoListItemProps>(({ todo, todos, setTodos }) =
     }
     setTodos(newTodos);
   };
-  console.log(todo);
+
   return (
     <StyledLi isCompleted={todo.isCompleted}>
       <StyledAction type="button" onClick={handleComplete} isCompleted={todo.isCompleted}>

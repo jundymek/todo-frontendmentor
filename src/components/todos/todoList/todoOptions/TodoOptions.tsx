@@ -24,14 +24,14 @@ const StyledFilterOption = styled.span<{ type: string; filterBy: "all" | "active
   color: ${(props) => (props.filterBy === props.type ? "hsl(220, 98%, 61%)" : "hsl(234, 11%, 52%)")};
   cursor: pointer;
   &:hover {
-    color: hsl(234, 39%, 85%);
+    color: ${({ theme }) => theme.hoverOptionColor};
   }
 `;
 
 const StyledSpan = styled.span`
   cursor: pointer;
   &:hover {
-    color: hsl(234, 39%, 85%);
+    color: ${({ theme }) => theme.clearCompletedHoverColor};
   }
 `;
 

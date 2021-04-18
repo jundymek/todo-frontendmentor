@@ -1,15 +1,15 @@
 import { createGlobalStyle } from "styled-components";
-import bgImage from "../assets/images/bg-desktop-dark.jpg";
 
-const GlobalStyle = createGlobalStyle`
+const GlobalStyle = createGlobalStyle<any>`
   body {
     margin: 0;
     padding: 0;
     font-family: 'Josefin Sans', sans-serif;
-    background-image: url(${bgImage});
-    background-size: 100% 40%;
+    background-image: ${({ theme }) => theme.backgroundImage};
+    background-size: 100% 30%;
     background-repeat: no-repeat;
-    background-color: hsl(235, 21%, 11%);
+    background-color: ${({ theme }) => theme.backgroundColor};
+    min-height:100vh;
   }
 
 `;

@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import iconSun from "../../assets/images/icon-sun.svg";
+import iconMoon from "../../assets/images/icon-moon.svg";
 
 const StyledHeader = styled.header`
   display: flex;
@@ -22,6 +23,7 @@ const StyledButton = styled.button`
   margin: 0;
   border: none;
   cursor: pointer;
+  outline: none;
 `;
 
 const StyledIcon = styled.img`
@@ -29,15 +31,31 @@ const StyledIcon = styled.img`
   height: 30px;
 `;
 
-const Header = () => {
+interface HeaderProps {
+  theme: "light" | "dark";
+  setTheme: React.Dispatch<React.SetStateAction<"light" | "dark">>;
+}
+
+const Header = React.memo<HeaderProps>(({ theme, setTheme }) => {
+  const handleChangeTheme = () => {
+    setTheme((prevState) => {
+      if (prevState === "light") {
+        return "dark";
+      }
+      return "light";
+    });
+  };
+
+  const icon = theme === "light" ? iconMoon : iconSun;
+
   return (
     <StyledHeader>
       <StyledTitle>TODO</StyledTitle>
       <StyledButton>
-        <StyledIcon src={iconSun} alt="Sun icon" />
+        <StyledIcon src={icon} alt="Sun icon" onClick={handleChangeTheme} />
       </StyledButton>
     </StyledHeader>
   );
-};
+});
 
 export default Header;
