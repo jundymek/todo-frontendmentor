@@ -1,11 +1,15 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import TodoList from "./todoList/TodoList";
+import FilterBySection from "./todoList/todoOptions/FilterBySection";
 import TodoOptions from "./todoList/todoOptions/TodoOptions";
 
 const StyledWrapper = styled.div`
   width: 100%;
-  margin-top: 100px;
+  margin-top: 20px;
+  @media (min-width: 800px) {
+    margin-top: 40px;
+  }
 `;
 
 const StyledForm = styled.form`
@@ -29,7 +33,7 @@ const StyledForm = styled.form`
 const StyledInput = styled.input`
   width: 100%;
   box-sizing: border-box;
-  padding: 30px 20px 30px 80px;
+  padding: 20px 20px 20px 80px;
   margin: 0;
   border: none;
   border-radius: 5px;
@@ -50,6 +54,24 @@ const TodosWrapper = styled.div`
   padding: 0;
   display: flex;
   flex-direction: column;
+`;
+
+const StyledFilterMobile = styled.div`
+  width: 100%;
+  border-radius: 5px;
+  margin-top: 30px;
+  padding: 20px 0;
+  background: ${({ theme }) => theme.todosWrapper};
+  display: flex;
+  justify-content: center;
+  @media (min-width: 800px) {
+    display: none;
+  }
+`;
+
+const StyledDivMobile = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
 `;
 
 export interface SingleToDo {
@@ -102,6 +124,11 @@ const Todos = () => {
         <TodoList todos={filteredTodos()} setTodos={setTodos} />
         <TodoOptions todos={todos} setTodos={setTodos} filterBy={filterBy} setFilterBy={setFilterBy} />
       </TodosWrapper>
+      <StyledFilterMobile>
+        <StyledDivMobile>
+          <FilterBySection filterBy={filterBy} setFilterBy={setFilterBy} />
+        </StyledDivMobile>
+      </StyledFilterMobile>
     </StyledWrapper>
   );
 };

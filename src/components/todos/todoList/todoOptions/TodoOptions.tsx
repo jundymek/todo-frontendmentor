@@ -1,13 +1,17 @@
 import React from "react";
 import styled from "styled-components";
 import { SingleToDo } from "../../Todos";
+import FilterBySection from "./FilterBySection";
 
 const OptionsWrapper = styled.div`
-  padding: 20px 20px;
+  padding: 15px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   color: hsl(234, 11%, 52%);
+  @media (max-width: 800px) {
+    padding: 20px 20px;
+  }
 `;
 
 const StyledItemCounter = styled.span`
@@ -18,13 +22,8 @@ const StyledDiv = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   width: 30%;
-`;
-
-const StyledFilterOption = styled.span<{ type: string; filterBy: "all" | "active" | "completed" }>`
-  color: ${(props) => (props.filterBy === props.type ? "hsl(220, 98%, 61%)" : "hsl(234, 11%, 52%)")};
-  cursor: pointer;
-  &:hover {
-    color: ${({ theme }) => theme.hoverOptionColor};
+  @media (max-width: 800px) {
+    display: none;
   }
 `;
 
@@ -50,21 +49,15 @@ const TodoOptions = React.memo<TodoOptionsProps>(({ todos, setTodos, filterBy, s
     setTodos(newTodos);
   };
   return (
-    <OptionsWrapper>
-      <StyledItemCounter>{leftItems} Items left</StyledItemCounter>
-      <StyledDiv>
-        <StyledFilterOption type="all" filterBy={filterBy} onClick={() => setFilterBy("all")}>
-          All
-        </StyledFilterOption>
-        <StyledFilterOption type="active" filterBy={filterBy} onClick={() => setFilterBy("active")}>
-          Active
-        </StyledFilterOption>
-        <StyledFilterOption type="completed" filterBy={filterBy} onClick={() => setFilterBy("completed")}>
-          Completed
-        </StyledFilterOption>
-      </StyledDiv>
-      <StyledSpan onClick={handleClearCompleted}>Clear completed</StyledSpan>
-    </OptionsWrapper>
+    <>
+      <OptionsWrapper>
+        <StyledItemCounter>{leftItems} Items left</StyledItemCounter>
+        <StyledDiv>
+          <FilterBySection filterBy={filterBy} setFilterBy={setFilterBy} />
+        </StyledDiv>
+        <StyledSpan onClick={handleClearCompleted}>Clear completed</StyledSpan>
+      </OptionsWrapper>
+    </>
   );
 });
 
