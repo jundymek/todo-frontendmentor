@@ -94,6 +94,7 @@ const Todos = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setTodos((prevState) => [...prevState, { title: newToDo, isCompleted: false, id: setId() }]);
+    setNewToDo("");
   };
 
   const filteredTodos = () => {
@@ -114,6 +115,7 @@ const Todos = () => {
     <StyledWrapper>
       <StyledForm onSubmit={handleSubmit}>
         <StyledInput
+          value={newToDo}
           type="text"
           onChange={handleChange}
           placeholder="Create a new todo..."
