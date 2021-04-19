@@ -2,11 +2,13 @@ import React from "react";
 import { SingleToDo } from "../../Todos";
 import styled from "styled-components";
 import checkIcon from "../../../../assets/images/icon-check.svg";
+import { Draggable } from "react-beautiful-dnd";
 
 interface TodoListItemProps {
   todo: SingleToDo;
   todos: SingleToDo[] | [];
   setTodos: React.Dispatch<React.SetStateAction<SingleToDo[] | []>>;
+  index: number;
 }
 
 const StyledLi = styled.li<{ isCompleted: boolean }>`
@@ -74,7 +76,7 @@ const StyledInnerButton = styled.div<{ isCompleted: boolean }>`
   top: 2px;
   left: 2px;
 `;
-const TodoListItem = React.memo<TodoListItemProps>(({ todo, todos, setTodos }) => {
+const TodoListItem = React.memo<TodoListItemProps>(({ todo, todos, setTodos, index }) => {
   const handleComplete = () => {
     const newTodos = [...todos];
     console.log(newTodos);
@@ -86,12 +88,21 @@ const TodoListItem = React.memo<TodoListItemProps>(({ todo, todos, setTodos }) =
   };
 
   return (
-    <StyledLi isCompleted={todo.isCompleted}>
-      <StyledAction type="button" onClick={handleComplete} isCompleted={todo.isCompleted}>
-        <StyledInnerButton isCompleted={todo.isCompleted}></StyledInnerButton>
-      </StyledAction>
-      {todo.title}
-    </StyledLi>
+    <Draggable key={todo.id} draggableId={todo.title} index={index}>
+      {(provided) => (
+        <StyledLi
+          isCompleted={todo.isCompleted}
+          ref={provided.innerRef}
+          {...provided.draggableProps}
+          {...provided.dragHandleProps}
+        >
+          <StyledAction type="button" onClick={handleComplete} isCompleted={todo.isCompleted}>
+            <StyledInnerButton isCompleted={todo.isCompleted}></StyledInnerButton>
+          </StyledAction>
+          {todo.title}
+        </StyledLi>
+      )}
+    </Draggable>
   );
 });
 
