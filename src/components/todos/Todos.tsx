@@ -54,6 +54,8 @@ const TodosWrapper = styled.div`
   padding: 0;
   display: flex;
   flex-direction: column;
+  box-shadow: ${({ theme }) =>
+    `5px 25px 16px 0px ${theme.todosBoxShadowColor}, -5px 25px 16px 0px ${theme.todosBoxShadowColor}`};
 `;
 
 const StyledFilterMobile = styled.div`

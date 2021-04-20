@@ -9,6 +9,7 @@ const GlobalStyle = createGlobalStyle<any>`
     background-size: 100% 30%;
     background-repeat: no-repeat;
     background-color: ${({ theme }) => theme.backgroundColor};
+    filter: drop-shadow(none);
     min-height:100vh;
     @media(max-width: 800px) {
       background-image: ${({ theme }) => theme.backgroundMobile};

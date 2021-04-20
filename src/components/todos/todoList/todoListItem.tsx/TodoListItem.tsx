@@ -88,7 +88,7 @@ const TodoListItem = React.memo<TodoListItemProps>(({ todo, todos, setTodos, ind
   };
 
   return (
-    <Draggable key={todo.id} draggableId={todo.title} index={index}>
+    <Draggable key={todo.id} draggableId={todo.id.toString()} index={index}>
       {(provided) => (
         <StyledLi
           isCompleted={todo.isCompleted}

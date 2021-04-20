@@ -14,6 +14,7 @@ export const lightTheme = {
   todoListItemColor: `hsl(235, 19%, 35%)`,
   hoverOptionColor: `hsl(237, 14%, 26%)`,
   clearCompletedHoverColor: `hsl(235, 19%, 35%)`,
+  todosBoxShadowColor: `hsl(236, 33%, 91%)`,
 };
 export const darkTheme = {
   backgroundImage: `url(${bgImageDark})`,
@@ -26,6 +27,7 @@ export const darkTheme = {
   todoListItemColor: `hsl(234, 39%, 85%)`,
   hoverOptionColor: `hsl(236, 33%, 92%)`,
   clearCompletedHoverColor: `hsl(234, 39%, 85%)`,
+  todosBoxShadowColor: `hsl(235, 21%, 11%)`,
 };
 
 export const media = {
