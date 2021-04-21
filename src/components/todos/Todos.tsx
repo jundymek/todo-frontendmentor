@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import TodoList from "./todoList/TodoList";
 import FilterBySection from "./todoList/todoOptions/FilterBySection";
@@ -41,6 +41,7 @@ const StyledInput = styled.input`
   font-size: 18px;
   margin: 0;
   border: none;
+  font-family: "Josefin Sans";
   border-radius: 5px;
   color: hsl(234, 11%, 52%);
   background-color: ${({ theme }) => theme.todoListItemBackground};
@@ -80,12 +81,11 @@ const StyledFilterMobile = styled.div`
   @media (max-width: 800px) {
     display: flex;
     font-size: 14px;
-    font-weight: bold;
   }
 `;
 
 const StyledDivMobile = styled.div`
-  display: grid;
+  display: flex;
   grid-template-columns: 1fr 1fr 1fr;
 `;
 
@@ -106,13 +106,24 @@ const Todos = () => {
   const [todos, setTodos] = useState<SingleToDo[] | []>([]);
   const [filterBy, setFilterBy] = useState<"all" | "active" | "completed">("all");
 
+  useEffect(() => {
+    const localStorageTodos = localStorage.getItem("todos");
+    if (localStorageTodos?.length) {
+      setTodos(JSON.parse(localStorageTodos));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos]);
+
   const setId = () => {
     if (todos.length) {
       return Math.max(...todos.map((todo: any) => todo.id)) + 1;
     }
     return 1;
   };
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setTodos((prevState) => [...prevState, { title: newToDo, isCompleted: false, id: setId() }]);
     setNewToDo("");
