@@ -7,7 +7,7 @@ import { ThemeProvider } from "styled-components";
 import { lightTheme, darkTheme } from "./styles/themes";
 
 const StyledLayout = styled.div`
-  max-width: 800px;
+  max-width: 600px;
   margin: 0 auto;
 `;
 

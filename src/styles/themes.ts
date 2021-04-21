@@ -16,6 +16,7 @@ export const lightTheme = {
   clearCompletedHoverColor: `hsl(235, 19%, 35%)`,
   todosBoxShadowColor: `hsl(236, 33%, 91%)`,
   dragInfoTextColor: `hsl(236, 9%, 61%)`,
+  todoListItemTextColor: `hsl(236, 9%, 61%)`,
 };
 export const darkTheme = {
   backgroundImage: `url(${bgImageDark})`,
@@ -30,6 +31,7 @@ export const darkTheme = {
   clearCompletedHoverColor: `hsl(234, 39%, 85%)`,
   todosBoxShadowColor: `hsl(235, 21%, 11%)`,
   dragInfoTextColor: `hsl(234, 11%, 52%)`,
+  todoListItemTextColor: `hsl(234, 11%, 52%)`,
 };
 
 export const media = {

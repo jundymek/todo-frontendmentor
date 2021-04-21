@@ -6,7 +6,7 @@ import TodoOptions from "./todoList/todoOptions/TodoOptions";
 
 const StyledWrapper = styled.div`
   width: 100%;
-  margin-top: 20px;
+  margin-top: 0px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -41,17 +41,18 @@ const StyledInput = styled.input`
   font-size: 18px;
   margin: 0;
   border: none;
-  font-family: "Josefin Sans";
+  font-family: "Josefin Sans", sans-serif;
   border-radius: 5px;
-  color: hsl(234, 11%, 52%);
+  color: ${({ theme }) => theme.todoListItemTextColor};
   background-color: ${({ theme }) => theme.todoListItemBackground};
   font-weight: 400;
   &::placeholder {
-    color: hsl(234, 11%, 52%);
+    color: ${({ theme }) => theme.todoListItemTextColor};
     font-size: 18px;
   }
   @media (max-width: 800px) {
     font-size: 12px;
+    padding: 20px 20px 20px 60px;
     &::placeholder {
       font-size: 12px;
     }
@@ -66,14 +67,13 @@ const TodosWrapper = styled.div`
   padding: 0;
   display: flex;
   flex-direction: column;
-  box-shadow: ${({ theme }) =>
-    `5px 25px 16px 0px ${theme.todosBoxShadowColor}, -5px 25px 16px 0px ${theme.todosBoxShadowColor}`};
+  overflow: hidden;
 `;
 
 const StyledFilterMobile = styled.div`
   width: 100%;
   border-radius: 5px;
-  margin-top: 30px;
+  margin-top: 20px;
   padding: 20px 0;
   background: ${({ theme }) => theme.todosWrapper};
   display: none;

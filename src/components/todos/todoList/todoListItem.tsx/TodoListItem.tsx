@@ -2,6 +2,7 @@ import React from "react";
 import { SingleToDo } from "../../Todos";
 import styled from "styled-components";
 import checkIcon from "../../../../assets/images/icon-check.svg";
+import crossIcon from "../../../../assets/images/icon-cross.svg";
 import { Draggable } from "react-beautiful-dnd";
 
 interface TodoListItemProps {
@@ -20,7 +21,6 @@ const StyledLi = styled.li<{ isCompleted: boolean }>`
     props.isCompleted ? `${props.theme.todoListItemColorCompleted}` : `${props.theme.todoListItemColor}`};
   text-decoration: ${(props) => (props.isCompleted ? "line-through" : "none")};
   background-color: ${({ theme }) => theme.todoListItemBackground};
-  font-weight: 400;
   border-bottom: 1px solid ${({ theme }) => theme.todoListItemBorder};
   position: relative;
   &:first-child {
@@ -29,6 +29,7 @@ const StyledLi = styled.li<{ isCompleted: boolean }>`
   }
   @media (max-width: 800px) {
     font-size: 12px;
+    padding: 20px 20px 20px 60px;
   }
 `;
 
@@ -52,7 +53,7 @@ const StyledAction = styled.a<{ isCompleted: boolean }>`
   background: ${(props) =>
     props.isCompleted ? "linear-gradient(to right, hsl(192, 100%, 67%), hsl(280, 87%, 65%))" : "none"};
   &:hover {
-    transition: 1s;
+    transition: color 1s;
     border: 4px solid linear-gradient(to right, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
     background: linear-gradient(to right, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
   }
@@ -60,10 +61,14 @@ const StyledAction = styled.a<{ isCompleted: boolean }>`
     position: absolute;
     content: url(${checkIcon});
     text-align: center;
-    top: 2px;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    top: 40%;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    width: 10px;
+    height: 10px;
+    @media (max-width: 800px) {
+      top: 50%;
+    }
   }
 `;
 
@@ -78,6 +83,36 @@ const StyledInnerButton = styled.div<{ isCompleted: boolean }>`
   top: 2px;
   left: 2px;
 `;
+
+const StyledDeleteButton = styled.button`
+  position: absolute;
+  content: "";
+  background-image: url(${crossIcon});
+  background-size: 12px 12px;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  width: 12px;
+  height: 12px;
+  background: none;
+  padding: 0;
+  margin: 0;
+  border: none;
+  cursor: pointer;
+  @media (min-width: 800px) {
+    display: none;
+  }
+`;
+
+const StyledIcon = styled.img`
+  width: 12px;
+  height: 12px;
+  @media (max-width: 800px) {
+    width: 12px;
+    height: 12px;
+  }
+`;
+
 const TodoListItem = React.memo<TodoListItemProps>(({ todo, todos, setTodos, index }) => {
   const handleComplete = () => {
     const newTodos = [...todos];
@@ -87,6 +122,11 @@ const TodoListItem = React.memo<TodoListItemProps>(({ todo, todos, setTodos, ind
       x.isCompleted = !x.isCompleted;
     }
     setTodos(newTodos);
+  };
+
+  const handleDelete = () => {
+    const filtered = todos.filter((item) => item.id !== todo.id);
+    setTodos(filtered);
   };
 
   return (
@@ -102,6 +142,9 @@ const TodoListItem = React.memo<TodoListItemProps>(({ todo, todos, setTodos, ind
             <StyledInnerButton isCompleted={todo.isCompleted}></StyledInnerButton>
           </StyledAction>
           {todo.title}
+          <StyledDeleteButton onClick={handleDelete}>
+            <StyledIcon src={crossIcon} alt="Sun icon" />
+          </StyledDeleteButton>
         </StyledLi>
       )}
     </Draggable>
