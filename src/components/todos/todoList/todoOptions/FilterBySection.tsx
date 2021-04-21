@@ -9,6 +9,8 @@ interface FilterBySectionProps {
 const StyledFilterOption = styled.span<{ type: string; filterBy: "all" | "active" | "completed" }>`
   color: ${(props) => (props.filterBy === props.type ? "hsl(220, 98%, 61%)" : "hsl(234, 11%, 52%)")};
   cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
   &:hover {
     color: ${({ theme }) => theme.hoverOptionColor};
   }

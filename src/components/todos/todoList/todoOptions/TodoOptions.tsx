@@ -9,14 +9,14 @@ const OptionsWrapper = styled.div`
   justify-content: space-between;
   align-items: center;
   color: hsl(234, 11%, 52%);
+  font-size: 14px;
   @media (max-width: 800px) {
     padding: 20px 20px;
+    font-size: 12px;
   }
 `;
 
-const StyledItemCounter = styled.span`
-  font-size: 12px;
-`;
+const StyledItemCounter = styled.span``;
 
 const StyledDiv = styled.div`
   display: grid;

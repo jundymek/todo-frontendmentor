@@ -7,8 +7,12 @@ import TodoOptions from "./todoList/todoOptions/TodoOptions";
 const StyledWrapper = styled.div`
   width: 100%;
   margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   @media (min-width: 800px) {
-    margin-top: 40px;
+    margin-top: 20px;
   }
 `;
 
@@ -34,21 +38,28 @@ const StyledInput = styled.input`
   width: 100%;
   box-sizing: border-box;
   padding: 20px 20px 20px 80px;
+  font-size: 18px;
   margin: 0;
   border: none;
   border-radius: 5px;
   color: hsl(234, 11%, 52%);
-  font-size: 18px;
   background-color: ${({ theme }) => theme.todoListItemBackground};
   font-weight: 400;
   &::placeholder {
     color: hsl(234, 11%, 52%);
     font-size: 18px;
   }
+  @media (max-width: 800px) {
+    font-size: 12px;
+    &::placeholder {
+      font-size: 12px;
+    }
+  }
 `;
 
 const TodosWrapper = styled.div`
   border-radius: 5px;
+  width: 100%;
   background: ${({ theme }) => theme.todosWrapper};
   margin: 0;
   padding: 0;
@@ -64,16 +75,24 @@ const StyledFilterMobile = styled.div`
   margin-top: 30px;
   padding: 20px 0;
   background: ${({ theme }) => theme.todosWrapper};
-  display: flex;
+  display: none;
   justify-content: center;
-  @media (min-width: 800px) {
-    display: none;
+  @media (max-width: 800px) {
+    display: flex;
+    font-size: 14px;
+    font-weight: bold;
   }
 `;
 
 const StyledDivMobile = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+`;
+
+const StyledDragInfo = styled.p`
+  margin-top: 50px;
+  font-size: 14px;
+  color: ${({ theme }) => theme.dragInfoTextColor};
 `;
 
 export interface SingleToDo {
@@ -133,6 +152,7 @@ const Todos = () => {
           <FilterBySection filterBy={filterBy} setFilterBy={setFilterBy} />
         </StyledDivMobile>
       </StyledFilterMobile>
+      <StyledDragInfo>Drag and drop to reorder list</StyledDragInfo>
     </StyledWrapper>
   );
 };

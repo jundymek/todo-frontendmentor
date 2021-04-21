@@ -18,7 +18,6 @@ const StyledLi = styled.li<{ isCompleted: boolean }>`
   margin: 0;
   color: ${(props) =>
     props.isCompleted ? `${props.theme.todoListItemColorCompleted}` : `${props.theme.todoListItemColor}`};
-  font-size: 18px;
   text-decoration: ${(props) => (props.isCompleted ? "line-through" : "none")};
   background-color: ${({ theme }) => theme.todoListItemBackground};
   font-weight: 400;
@@ -27,6 +26,9 @@ const StyledLi = styled.li<{ isCompleted: boolean }>`
   &:first-child {
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
+  }
+  @media (max-width: 800px) {
+    font-size: 12px;
   }
 `;
 
