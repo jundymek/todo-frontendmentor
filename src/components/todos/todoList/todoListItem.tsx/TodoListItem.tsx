@@ -15,7 +15,7 @@ interface TodoListItemProps {
 const StyledLi = styled.li<{ isCompleted: boolean }>`
   width: 100%;
   box-sizing: border-box;
-  padding: 20px 20px 20px 80px;
+  padding: 20px 60px 20px 80px;
   margin: 0;
   color: ${(props) =>
     props.isCompleted ? `${props.theme.todoListItemColorCompleted}` : `${props.theme.todoListItemColor}`};
@@ -23,6 +23,7 @@ const StyledLi = styled.li<{ isCompleted: boolean }>`
   background-color: ${({ theme }) => theme.todoListItemBackground};
   border-bottom: 1px solid ${({ theme }) => theme.todoListItemBorder};
   position: relative;
+  word-break: break-all;
   &:first-child {
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
