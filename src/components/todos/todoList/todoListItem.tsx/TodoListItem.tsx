@@ -87,29 +87,33 @@ const StyledInnerButton = styled.div<{ isCompleted: boolean }>`
 const StyledDeleteButton = styled.button`
   position: absolute;
   content: "";
-  background-image: url(${crossIcon});
+  background: none;
   background-size: 12px 12px;
   top: 50%;
   right: 20px;
   transform: translateY(-50%);
+  padding: 0;
   width: 12px;
   height: 12px;
-  background: none;
-  padding: 0;
   margin: 0;
   border: none;
   cursor: pointer;
   @media (min-width: 800px) {
+    width: 18px;
+    height: 18px;
     display: none;
+    ${StyledLi}:hover & {
+      display: block;
+    }
   }
 `;
 
 const StyledIcon = styled.img`
   width: 12px;
   height: 12px;
-  @media (max-width: 800px) {
-    width: 12px;
-    height: 12px;
+  @media (min-width: 800px) {
+    width: 18px;
+    height: 18px;
   }
 `;
 
