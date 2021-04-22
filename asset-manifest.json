@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.js": "/todo-frontendmentor/static/js/main.787d0026.chunk.js",
+    "main.js.map": "/todo-frontendmentor/static/js/main.787d0026.chunk.js.map",
+    "runtime-main.js": "/todo-frontendmentor/static/js/runtime-main.7b233d63.js",
+    "runtime-main.js.map": "/todo-frontendmentor/static/js/runtime-main.7b233d63.js.map",
+    "static/js/2.6c5a6fc5.chunk.js": "/todo-frontendmentor/static/js/2.6c5a6fc5.chunk.js",
+    "static/js/2.6c5a6fc5.chunk.js.map": "/todo-frontendmentor/static/js/2.6c5a6fc5.chunk.js.map",
+    "static/js/3.8bdc0f15.chunk.js": "/todo-frontendmentor/static/js/3.8bdc0f15.chunk.js",
+    "static/js/3.8bdc0f15.chunk.js.map": "/todo-frontendmentor/static/js/3.8bdc0f15.chunk.js.map",
+    "index.html": "/todo-frontendmentor/index.html",
+    "static/js/2.6c5a6fc5.chunk.js.LICENSE.txt": "/todo-frontendmentor/static/js/2.6c5a6fc5.chunk.js.LICENSE.txt",
+    "static/media/bg-desktop-dark.73e47dbb.jpg": "/todo-frontendmentor/static/media/bg-desktop-dark.73e47dbb.jpg",
+    "static/media/bg-desktop-light.3508d620.jpg": "/todo-frontendmentor/static/media/bg-desktop-light.3508d620.jpg",
+    "static/media/icon-check.90acd799.svg": "/todo-frontendmentor/static/media/icon-check.90acd799.svg",
+    "static/media/icon-cross.6ee81d30.svg": "/todo-frontendmentor/static/media/icon-cross.6ee81d30.svg",
+    "static/media/icon-moon.6c03114b.svg": "/todo-frontendmentor/static/media/icon-moon.6c03114b.svg",
+    "static/media/icon-sun.910b1f9a.svg": "/todo-frontendmentor/static/media/icon-sun.910b1f9a.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.7b233d63.js",
+    "static/js/2.6c5a6fc5.chunk.js",
+    "static/js/main.787d0026.chunk.js"
+  ]
+}
