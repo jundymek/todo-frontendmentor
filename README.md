@@ -40,8 +40,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [Solution URL](https://github.com/jundymek/todo-frontendmentor)
+- Live Site URL: [Live site URL](https://jundymek.github.io/todo-frontendmentor/)
 
 ### Built with 🚀
 
