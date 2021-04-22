@@ -121,10 +121,9 @@ const StyledIcon = styled.img`
 const TodoListItem = React.memo<TodoListItemProps>(({ todo, todos, setTodos, index }) => {
   const handleComplete = () => {
     const newTodos = [...todos];
-    console.log(newTodos);
-    const x = newTodos.find((item) => item.id === todo.id);
-    if (x) {
-      x.isCompleted = !x.isCompleted;
+    const selectedTodo = newTodos.find((item) => item.id === todo.id);
+    if (selectedTodo) {
+      selectedTodo.isCompleted = !selectedTodo.isCompleted;
     }
     setTodos(newTodos);
   };
