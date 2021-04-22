@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.js": "/todo-frontendmentor/static/js/main.787d0026.chunk.js",
-    "main.js.map": "/todo-frontendmentor/static/js/main.787d0026.chunk.js.map",
+    "main.js": "/todo-frontendmentor/static/js/main.19919447.chunk.js",
+    "main.js.map": "/todo-frontendmentor/static/js/main.19919447.chunk.js.map",
     "runtime-main.js": "/todo-frontendmentor/static/js/runtime-main.7b233d63.js",
     "runtime-main.js.map": "/todo-frontendmentor/static/js/runtime-main.7b233d63.js.map",
     "static/js/2.6c5a6fc5.chunk.js": "/todo-frontendmentor/static/js/2.6c5a6fc5.chunk.js",
@@ -20,6 +20,6 @@
   "entrypoints": [
     "static/js/runtime-main.7b233d63.js",
     "static/js/2.6c5a6fc5.chunk.js",
-    "static/js/main.787d0026.chunk.js"
+    "static/js/main.19919447.chunk.js"
   ]
 }
